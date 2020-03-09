@@ -1,8 +1,17 @@
 language: node_js
 node_js:
-  - 'stable'
+- stable
 install: npm install
 services:
-  - mongodb
+- mongodb
 script: npm test
 after_success: npm run coverage
+deploy:
+  provider: heroku
+  api_key:
+    secure: Ms3Alr+few6m9T1XmzY5pHO6os/lKXEQIXaIfOrM483ih5IcjbWgZfZyQYAlTofeL1lFE/14Xquxm0PuDX3zYKRQiuUcrR8PECKEa2xxXuxBNScJMUrjAkKlkHtVscqcl0tXj5lFXxC9uR8jjtc5gyzMHno8o5FlKMtCWIOHv3f1Q19ZXxMzE9zda+gK7Pn4D4WuAQIHjsAwnRrhB+FeZMtrw5t0hwNvySAX75dqtXsGCPvRvOaJ+PWoLhfT+2ZknL/zNrQndXa8WqTIubIPEBmwBb+tHJpv/DApAsvBeJsO834Pkue3+ZwiFIFbUIvrArgWkRql0yLE0RuOoy7BIGLzfDe8cuo2a3NBCNA/irk0iSR09keuuljE0eobeQvXyONPqupvX3f1Bg3G1YnS2IJQ7JaP3pIG5AwhKlSwIG3mlsLETAXz5hBG1YprKQJY8/JpqVSu5FM2V7rUEMrHH/XetY0Os85VjkTOEa8TE4wZgBV2QYeOk3T3aUymGnjsszFr26gNAyXN0OIoOX+2kTOhC3C62V0ayUMnhpxskCt1vZ939xxD3kGj9n3zfqxDwe6JpBwgaCT3MxVWAsJb3opcSvX77IcpVVV33GrtnpYgB7cRqnIyTR8hHocsn5KU8vbtD77c9ZMy+pnLyrU4pQJB3pkdF1tHlpQ0umeB1WY=
+  app: some-dumb-app
+  on:
+    repo: DWilliamZero/mongodb-mongoose-express-ci
+  run:
+    - "node seed/userProjects.js"
